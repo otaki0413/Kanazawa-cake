@@ -1,0 +1,2 @@
+class DeliveryGoal < ApplicationRecord
+end
