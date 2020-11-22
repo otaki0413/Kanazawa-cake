@@ -10,6 +10,52 @@
   </head>
 
   <body>
+    <header>
+      <div class="container">
+        <nav class="nav navbar-nav navbar-left">
+          <img>ロゴ</img>
+        </nav>
+        <nav id="sidemenu">
+          <ul class="nav navbar-nav navbar-right">
+
+            <% if admin_signed_in? %>
+              <li class="nav-link">
+                <%= link_to "商品一覧", class: "btn btn-default" %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "会員一覧", class: "btn btn-default" %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "注文履歴一覧", class: "btn btn-default" %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "ジャンル一覧", class: "btn btn-default" %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-default" %>
+            <% else %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "About", class: "btn btn-default" %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "商品一覧", class: "btn btn-default" %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "新規登録", class: "btn btn-default" %>
+              </li>
+              <!--リンク先を指定することでボタンができる-->
+              <li class="nav-link">
+                <%= link_to "ログイン", admin_session_path, class: "btn btn-default" %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 </html>
