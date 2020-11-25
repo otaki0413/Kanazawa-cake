@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 bg-warning">
+      <h3>商品詳細</h3>
+    </div>
+
+    <div class="col-md-12 bg-danger">
+      <!--商品画像-->
+      <div class="col-md-5">
+        <div class="field row">
+          <%= attachment_image_tag @product, :image, :fill, 400, 400, format: 'jpeg', class: "img-rounded profile-img", fallback: "no_image.jpg" %>
+        </div>
+      </div>
+      <!--商品情報-->
+      <div class="col-md-7 bg-success">
+        <div class="form-group col-md-6 product-show">
+          <div>
+            <strong>商品名</strong>
+            <%= @product.name %>
+          </div>
+          <div>
+            <strong>商品説明</strong>
+            <%= @product.introduction %>
+          </div>
+          <div>
+            <strong>ジャンル</strong>
+            <%= @product.genre.name %>
+          </div>
+          <div>
+            <strong>税込価格（税抜価格）</strong>
+            <%= @product.no_tax_price %>円
+          </div>
+          <div>
+            <strong>販売ステータス</strong>
+            <% if @product.is_active == true %>
+              <small>販売中</small>
+            <% else %>
+              <small>売切れ</small>
+            <% end %>
+          </div>
+          <div class="form-group col-md-7">
+            <%= link_to '編集', edit_admin_product_path, class: 'btn btn-primary' %>
+            <%= link_to '削除', admin_product_path, method: :delete ,class: 'btn btn-danger', "data-confirm" => "Are you sure?" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
