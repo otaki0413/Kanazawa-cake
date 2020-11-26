@@ -20,7 +20,7 @@
 
             <% if admin_signed_in? %>
               <li class="nav-link">
-                <%= link_to "商品一覧", class: "btn btn-default" %>
+                <%= link_to "商品一覧", admin_products_path, class: "btn btn-default" %>
               </li>
               <li class="nav-link">
                 <%= link_to "会員一覧", class: "btn btn-default" %>
@@ -29,7 +29,7 @@
                 <%= link_to "注文履歴一覧", class: "btn btn-default" %>
               </li>
               <li class="nav-link">
-                <%= link_to "ジャンル一覧", class: "btn btn-default" %>
+                <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-default" %>
               </li>
               <li class="nav-link">
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-default" %>
@@ -39,7 +39,7 @@
                 <%= link_to "About", class: "btn btn-default" %>
               </li>
               <li class="nav-link">
-                <%= link_to "商品一覧", class: "btn btn-default" %>
+                <%= link_to "商品一覧", admin_products_path, class: "btn btn-default" %> <!-- 新規登録できないようにする  -->
               </li>
               <li class="nav-link">
                 <%= link_to "新規登録", class: "btn btn-default" %>

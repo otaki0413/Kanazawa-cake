@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
 
   get '/admin' => 'admin/homes#top'
+
   devise_for :admin, controllers: {
     sessions: 'admin/sessions',
   }
+  # URLは指定のパスにしたい,ファイル構成も指定のパスにしたい→namespace
+  namespace :admin do
+    resources :products
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
+  end
   # devise_for :admin, skip: :all
   # devise_scope :admin do
   #   get 'admin/sign_in' => 'admin/sessions#new'
