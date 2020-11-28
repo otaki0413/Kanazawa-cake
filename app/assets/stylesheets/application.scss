@@ -15,3 +15,57 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ * {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+ }
+
+
+// aboutページ
+.about-content {
+  text-align: center;
+}
+
+// 会員のログインページ
+.page-title {
+  margin-bottom: 50px;
+}
+.nav-message {
+  background: #d7cebb;
+  padding: 3px;
+  // margin-bottom: 15px;
+}
+.login-form {
+  text-align: left;
+}
+.login-form:first-child {
+  margin-top: 20px;
+}
+.col-form-label {
+  line-height: 34px;
+  padding-left: 200px;
+}
+.forget-password {
+  text-align: right;
+  margin: 0 200px;
+}
+.actions {
+  text-align: center;
+}
+.actions .btn {
+  padding: 10px 50px;
+}
+.registration-message {
+  text-align: left;
+  margin-top: 20px;
+}
+
+// 会員のサインアップページ
+.form-group {
+  // background: yellow;
+}
+.signup-form {
+  text-align: left;
+}

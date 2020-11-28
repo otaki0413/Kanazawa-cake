@@ -1,0 +1,49 @@
+<div class="container">
+  <h2 class="page-title">マイページ</h2>
+  <div class="row">
+    <div class="col-sm-7 bg-warning">
+      <div class="mypage-info">
+        <p class="col-sm-2 bg-danger"><strong>登録情報</strong></p>
+        <%= link_to "編集する", member_edit_path, class: "btn btn-primary col-sm-3" %>
+        <%= link_to "パスワードを変更する", member_edit_path, class: "btn btn-primary col-sm-3" %>
+
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th>氏名</th>
+              <td><%= current_member.last_name + current_member.first_name %></td>
+            </tr>
+            <tr>
+              <th>カナ</th>
+              <td><%= current_member.last_name_kana + current_member.first_name_kana %></td>
+            </tr>
+            <tr>
+              <th>郵便番号</th>
+              <td><%= current_member.postcode %></td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td><%= current_member.address %></td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td><%= current_member.phone_number %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= current_member.email %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="col-sm-2 bg-danger"><strong>配送先</strong></p>
+        <%= link_to "一覧を見る", member_edit_path, class: "btn btn-primary col-sm-4" %>
+
+        <p class="col-sm-2 bg-danger"><strong>注文履歴</strong></p>
+        <%= link_to "一覧を見る", member_edit_path, class: "btn btn-primary col-sm-4" %>
+
+      </div>
+    </div>
+
+  </div>
+</div>

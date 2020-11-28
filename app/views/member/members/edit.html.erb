@@ -1,0 +1,61 @@
+<div class="container">
+  <h2 class="page-title">登録情報編集</h2>
+  <strong class="nav-message">こちらから新規登録</strong>
+
+  <%= form_with model: current_member, url: member_edit_path, local: true do |f| %>
+    <!--<= render "devise/shared/error_messages", resource: resource %>-->
+
+    <div class="form-group row signup_form">
+      <%= f.label :name, "名前", class: "col-sm-4 col-form-label" %>
+      <div class="col-sm-3">
+        <%= f.text_field :last_name, autofocus: true, autocomplet: "last_name", class: "form-control", placeholder: "山田" %>
+      </div>
+      <div class="col-sm-3">
+        <%= f.text_field :first_name, autofocus: true, autocomplet: "first_name", class: "form-control", placeholder: "太郎" %>
+      </div>
+    </div>
+
+    <div class="form-group row signup_form">
+      <%= f.label :name, "フリガナ", class: "col-sm-4 col-form-label" %>
+      <div class="col-sm-3">
+        <%= f.text_field :last_name_kana, autofocus: true, autocomplet: "last_name_kana", class: "form-control", placeholder: "ヤマダ" %>
+      </div>
+      <div class="col-sm-3">
+        <%= f.text_field :first_name_kana, autofocus: true, autocomplet: "first_name_kana", class: "form-control", placeholder: "タロウ" %>
+      </div>
+    </div>
+
+    <div class="form-group row signup_form">
+      <%= f.label :email, "メールアドレス", class: "col-sm-4 col-form-label" %>
+      <div class="col-sm-4">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email@example.com" %>
+      </div>
+    </div>
+    <div class="form-group row signup_form">
+      <%= f.label :postcode, "郵便番号（ハイフンなし）", class: "col-sm-4 col-form-label" %>
+      <div class="col-sm-4">
+        <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode", class: "form-control", placeholder: "1234567" %>
+      </div>
+    </div>
+    <div class="form-group row signup_form">
+      <%= f.label :address, "住所", class: "col-sm-4 col-form-label"%>
+      <div class="col-sm-5">
+        <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control", placeholder: "⚪︎⚪️県⚪️⚪️市⚪️丁目〜️" %>
+      </div>
+    </div>
+    <div class="form-group row signup_form">
+      <%= f.label :phone_number, "電話番号（ハイフンなし）", class: "col-sm-4 col-form-label" %>
+      <div class="col-sm-4">
+        <%= f.telephone_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control", placeholder: "00000000000" %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "編集内容を保存する", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+      <%= link_to "退会する", member_unsubscribe_path, class: "btn btn-danger" %>
+  </div>
+

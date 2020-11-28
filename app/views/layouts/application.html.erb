@@ -12,12 +12,13 @@
   <body>
     <header>
       <div class="container">
+        <!--ナビゲーションに、フレックスボックスをかけるか？-->
         <nav class="nav navbar-nav navbar-left">
-          <img>ロゴ</img>
+          <img>ここにロゴが入ります</img>
         </nav>
         <nav id="sidemenu">
           <ul class="nav navbar-nav navbar-right">
-
+            <!--管理者サインインー-->
             <% if admin_signed_in? %>
               <li class="nav-link">
                 <%= link_to "商品一覧", admin_products_path, class: "btn btn-default" %>
@@ -33,20 +34,35 @@
               </li>
               <li class="nav-link">
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-default" %>
+              </li>
+            <!--会員サインインー-->
+            <% elsif member_signed_in? %>
+              <li class="nav-link">
+                <%= link_to "マイページ", member_path, class: "btn btn-default" %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "商品一覧", products_path, class: "btn btn-default" %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "カート", class: "btn btn-default" %>
+              </li>
+              <li class="nav-link">
+                <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-default" %>
+              </li>
+            <!--ログアウト時-->
             <% else %>
+              <li class="nav-link">
+                <%= link_to "About", about_path, class: "btn btn-default" %>
               </li>
               <li class="nav-link">
-                <%= link_to "About", class: "btn btn-default" %>
+                <%= link_to "商品一覧", admin_products_path, class: "btn btn-default" %>
               </li>
               <li class="nav-link">
-                <%= link_to "商品一覧", admin_products_path, class: "btn btn-default" %> <!-- 新規登録できないようにする  -->
+                <%= link_to "新規登録", new_member_registration_path, class: "btn btn-default" %>
               </li>
+              <!--会員のみで良い-->
               <li class="nav-link">
-                <%= link_to "新規登録", class: "btn btn-default" %>
-              </li>
-              <!--リンク先を指定することでボタンができる-->
-              <li class="nav-link">
-                <%= link_to "ログイン", admin_session_path, class: "btn btn-default" %>
+                <%= link_to "ログイン", new_member_session_path, class: "btn btn-default" %>
               </li>
             <% end %>
           </ul>
@@ -55,7 +71,6 @@
     </header>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
     <%= yield %>
   </body>
 </html>
