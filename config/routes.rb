@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  # namespace :admin do
+  #   get 'members/index'
+  #   get 'members/show'
+  #   get 'members/edit'
+  #   get 'members/update'
+  # end
   # namespace :member do
   #   get 'members/index'
   #   get 'members/edit'
@@ -44,6 +50,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :products
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :members, only: [:index, :show, :edit, :update]
   end
 
 

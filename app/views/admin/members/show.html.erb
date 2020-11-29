@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2 class="page-title"><%= @member.last_name + @member.first_name %>さんの会員詳細</h2>
+      <table class="table table-bordered mypage-table">
+        <tbody>
+          <tr>
+            <th class="category">顧客ID</th>
+            <td><%= @member.id %></td>
+          </tr>
+          <tr>
+            <th class="category">氏名</th>
+            <td><%= @member.last_name + @member.first_name %></td>
+          </tr>
+          <tr>
+            <th class="category">フリガナ</th>
+            <td><%= @member.last_name_kana + @member.first_name_kana %></td>
+          </tr>
+          <tr>
+            <th class="category">郵便番号</th>
+            <td><%= @member.postcode %></td>
+          </tr>
+          <tr>
+            <th class="category">住所</th>
+            <td><%= @member.address %></td>
+          </tr>
+          <tr>
+            <th class="category">電話番号</th>
+            <td><%= @member.phone_number %></td>
+          </tr>
+          <tr>
+            <th class="category">メールアドレス</th>
+            <td colspan="2"><%= @member.email %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="nav-row col-sm-7">
+        <%= link_to "編集する",  edit_admin_member_path, class: "btn btn-primary col-sm-5" %>
+        <%= link_to "注文履歴一覧へ", member_edit_path, class: "btn btn-primary col-sm-5" %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
