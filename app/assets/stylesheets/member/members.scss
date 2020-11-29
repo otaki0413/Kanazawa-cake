@@ -1,3 +1,23 @@
 // Place all the styles related to the member::members controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// マイページ
+.info-heading {
+  line-height: 34px;
+  font-size: 1.8rem;
+}
+.nav-row .btn-primary {
+  margin-right: 20px;
+}
+.category {
+  background: #f6efdb;
+}
+.unsubscribe {
+  padding-right: 250px;
+}
+.unsubscribe .btn {
+  padding: 5px 25px;
+  float: right;
+}

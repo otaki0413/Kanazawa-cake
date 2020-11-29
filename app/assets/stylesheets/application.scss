@@ -22,6 +22,14 @@
    box-sizing: border-box;
  }
 
+// ヘッダーナビゲーション
+.navlink {
+  // margin-right: 10px;
+}
+
+.nav-btn {
+  margin: 10px;
+}
 
 // aboutページ
 .about-content {
@@ -68,4 +76,10 @@
 }
 .signup-form {
   text-align: left;
+}
+
+// ページ上部のログイン確認
+.login-name-message {
+  font-weight: bold;
+  color: orange;
 }

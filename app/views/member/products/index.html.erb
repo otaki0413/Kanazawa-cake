@@ -4,10 +4,9 @@
     <div class="col-sm-2 bg-warning">
       <div class="genre-serch-box">
         <p class="genre-serch-text"><strong>ジャンル検索</strong></p>
-        <p class="genre-name">ケーキ</p>
-        <p class="genre-name">焼き菓子</p>
-        <p class="genre-name">プリン</p>
-        <p class="genre-name">キャンディ</p>
+        <% @genres.each do |genre| %>
+          <p class="genre-name"><%= genre.name %></p>
+        <% end %>
       </div>
     </div>
     <div class="col-sm-10 bg-success">

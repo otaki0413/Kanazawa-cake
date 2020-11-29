@@ -9,9 +9,9 @@
 }
 
 .genre-serch-box {
-  // width: 200px;
   height: 463px;
-  background: grey;
+  border: 1px solid gray;
+  padding: 5px;
 }
 .genre-serch-text {
   text-align: center;
@@ -20,7 +20,7 @@
 }
 .genre-name {
   // padding: 0 0 10px 50px;
-  text-align: center;
+  text-align: left;
   font-size: 18px;
 }
 

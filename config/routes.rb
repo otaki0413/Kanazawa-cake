@@ -23,13 +23,15 @@ Rails.application.routes.draw do
   }
 
   get '/admin' => 'admin/homes#top'
+
+  # member/homesコントローラのルーティング
   root 'member/homes#top'
   get '/about' => 'member/homes#about'
 
   # member/membersコントローラのルーティング
   get '/member' => 'member/members#index'
   get '/member/edit' => 'member/members#edit'
-  patch '/member' => 'member/members#update'
+  patch '/member' => 'member/members#update', as: "members"
   get '/member/unsubscribe' => 'member/members#unsubscribe'
   patch '/member/retire' => 'member/members#retire'
 
