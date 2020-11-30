@@ -19,8 +19,9 @@
           <h2><%= @product.name %></h2>
           <p><%= @product.introduction %></p>
           <h3>￥<%= @product.no_tax_price %><small>(税込）</small> </h3>
-          
-          <%= form_with model: @cart_item, url: admin_products_path, local: true do |f| %>
+
+          <!--ここからカートに商品データ追加-->
+          <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
           <div class="form-group col-sm-5">
             <%= f.number_field :amount, class: "form-control", placeholder: "何個ほしい？？", min: 1, max: 150 %>
           </div>
@@ -28,6 +29,7 @@
             <%= f.submit "カートに入れる", class: "btn btn-primary" %>
           </div>
           <% end %>
+
         </div>
       </div>
     </div>

@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  # namespace :member do
+  #   get 'orders/index'
+  #   get 'orders/new'
+  #   get 'orders/show'
+  #   get 'orders/create'
+  #   get 'orders/confirm'
+  #   get 'orders/thanks'
+  # end
+  # namespace :member do
+  #   get 'cart_items/index'
+  #   get 'cart_items/update'
+  #   get 'cart_items/destroy'
+  #   get 'cart_items/all_destroy'
+  # end
   # namespace :admin do
   #   get 'members/index'
   #   get 'members/show'
@@ -41,10 +55,20 @@ Rails.application.routes.draw do
   get '/member/unsubscribe' => 'member/members#unsubscribe'
   patch '/member/retire' => 'member/members#retire'
 
+  # member/cart_itemsコントローラの追加ルーティング
+  delete '/cart_items' => 'mamber/cart_items#all_destroy'
+
+  # member/ordersコントローラの追加ルーティング
+  get '/orders/confirm' => 'member/orders#confirm'
+  get '/orders/thanks' => 'member/orders#thanks'
+
   # member/productsコントローラのルーティング
   scope module: :member do
     resources :products, only: [:index, :show]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :orders, only: [:index, :create, :show, :new]
   end
+
 
   # URLは指定のパスにしたい,ファイル構成も指定のパスにしたい→namespace
   namespace :admin do
