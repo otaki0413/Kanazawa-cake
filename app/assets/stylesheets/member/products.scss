@@ -1,0 +1,40 @@
+// Place all the styles related to the member::products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// 商品一覧ページ
+.col-sm-2 {
+  // margin-right: 20px;
+}
+
+.genre-serch-box {
+  height: 463px;
+  border: 1px solid gray;
+  padding: 5px;
+}
+.genre-serch-text {
+  text-align: center;
+  background: orange;
+  font-size: 22px;
+}
+.genre-name {
+  // padding: 0 0 10px 50px;
+  text-align: left;
+  font-size: 18px;
+}
+
+// 画面右側
+.product-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+//   width: 1200px;
+//   height: 550px;
+}
+.product-box {
+  width: 230px;
+  height: 150px;
+  border: 1px solid black;
+  margin-bottom: 50px;
+}
