@@ -1,0 +1,38 @@
+// Place all the styles related to the member::delivery_goals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+// ここから配送一覧・登録------------------------------------------------
+
+// ラベルとフォームの間隔を調整
+.form-group {
+  .delivery-label {
+    width: 200px;
+  }
+}
+
+// 登録ボタンと一覧に間隔を作る
+.actions {
+  margin-bottom: 30px;
+}
+// テーブルのサイズを調整
+.delivery-table {
+  width: 80%;
+  // border: 1px solid black;
+  th {
+    background-color: bisque;
+  }
+  th,td {
+    padding: 10px 0 10px 5px;
+  }
+  th:nth-child(4) {
+    width: 200px;
+  }
+  .delivery-btns {
+    text-align: center;
+  }
+}
+

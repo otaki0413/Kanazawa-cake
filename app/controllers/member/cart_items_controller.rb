@@ -2,13 +2,13 @@ class Member::CartItemsController < ApplicationController
   before_action :authenticate_member!
 
   def index
+    @cart_items = CartItem.all
+
   end
 
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.member_id = current_member.id
-    # カート内商品IDとカートに入れた商品IDを一緒にしたい
-    # @cart_item.product_id = Product.find(params[:i
     @cart_item.save
     redirect_to cart_items_path
   end
@@ -17,6 +17,9 @@ class Member::CartItemsController < ApplicationController
   end
 
   def destroy
+    cart_item = CartItem.find(params[:id])
+    cart_item.destroy
+    redirect_to cart_items_path
   end
 
   def all_destroy
@@ -25,6 +28,6 @@ class Member::CartItemsController < ApplicationController
   # ストロングパラメータ
   private
   def cart_item_params
-    params.require(:cart_item).permit(:amount)
+    params.require(:cart_item).permit(:amount, :product_id)
   end
 end

@@ -2,7 +2,7 @@
   <div class="row">
 
     <div class="box col-12">
-      <div class="col-md-4 bg-warning">
+      <div class="col-sm-4 bg-warning">
         <h3 class="table-title">ショッピングカート</h3>
       </div>
       <!--ここからカートテーブル-->
@@ -16,35 +16,32 @@
             <th>削除ボタン</th>
           </tr>
         </thead>
-        <!--< @cart_items.each do |cart| %>-->
+
+        <% @cart_items.each do |cart| %>
         <tbody>
           <tr>
-            <th>いちごのショートケーキ</th>
-            <td>1,100</td>
-            <td>2</td>
-            <td>2,200</td>
+            <th><%= cart.product.name %></th>
+            <td><%= cart.product.no_tax_price * 1.1.to_i %>円</td>
             <td>
-              <%= link_to '削除する', members_path, class: "btn btn-danger", method: :delete, "data-confirm" => "Are you sure?" %>
+            <!--# <= form_with model: @-->
+              <%= cart.amount %>
+              <%= link_to '変更', cart_item_path(cart.product_id), class: "btn btn-primary", method: :patch %>
             </td>
-          </tr>
-          <tr>
-            <th>プリン</th>
-            <td>600</td>
-            <td>2</td>
-            <td>1,200</td>
+            <td><%= cart.product.no_tax_price * 1.1.to_i * cart.amount %>円</td>
             <td>
-              <%= link_to '削除する', members_path, class: "btn btn-danger", method: :delete, "data-confirm" => "Are you sure?" %>
+              <%= link_to '削除する', cart_item_path(cart.id), class: "btn btn-danger", method: :delete, "data-confirm" => "Are you sure?" %>
             </td>
           </tr>
         </tbody>
-        <!--< end %>-->
+        <% end %>
+
       </table>
 
       <!--CSSで合計金額の表を作る-->
       <table>
         <tr>
           <th>合計金額</th>
-          <td>3,400</td>
+          <td></td>
         </tr>
       </table>
 

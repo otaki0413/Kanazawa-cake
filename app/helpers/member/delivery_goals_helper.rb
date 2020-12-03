@@ -1,0 +1,2 @@
+module Member::DeliveryGoalsHelper
+end
