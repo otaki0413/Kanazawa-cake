@@ -1,0 +1,56 @@
+<div class="container">
+  <h2 class="page-title">配送先登録・一覧</h2>
+
+  <%= form_with model: @new_delivery, url: delivery_goals_path, method: :post, local: true do |f| %>
+
+    <div class="form-group row">
+      <%= f.label :postcode, "郵便番号（ハイフンなし）", class: "col-sm-3 delivery-label" %>
+      <div class="col-sm-3">
+        <%= f.text_field :postcode, autofocus: true, autocomplet: "postcode", class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :address, "住所", class: "col-sm-3 delivery-label" %>
+      <div class="col-sm-5">
+        <%= f.text_field :address, autofocus: true, autocomplet: "address", class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :name, "宛名", class: "col-sm-3 delivery-label" %>
+      <div class="col-sm-5">
+        <%= f.text_field :name, autofocus: true, autocomplet: "name", class: "form-control" %>
+      </div>
+    </div>
+    <div class="actions col-sm-8">
+      <%= f.submit "登録する", class: "btn btn-success" %>
+    </div>
+  <% end %>
+
+
+  <!--ここから配送先一覧-->
+  <table class="table-hover table-bordered delivery-table">
+    <thead>
+      <tr>
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>宛名</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <% @deliverys.each do |delivery| %>
+    <tbody>
+      <tr>
+        <td><%= delivery.postcode %></td>
+        <td><%= delivery.address %></td>
+        <td><%= delivery.name %></td>
+        <td class="delivery-btns">
+          <%= link_to '編集する', edit_delivery_goal_path(delivery.id), class: "btn btn-primary" %>
+          <%= link_to '削除する', delivery_goal_path(delivery.id), method: :delete, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+
+</div>

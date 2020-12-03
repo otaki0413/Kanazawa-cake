@@ -23,9 +23,11 @@
           <!--ここからカートに商品データ追加-->
           <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
           <div class="form-group col-sm-5">
-            <%= f.number_field :amount, class: "form-control", placeholder: "何個ほしい？？", min: 1, max: 150 %>
+            <%= f.number_field :amount, class: "form-control", placeholder: "何個ほしい？？", min: 1, max: 99 %>
           </div>
           <div class="actions col-sm-5">
+            <!--viewからコントローラに直接パラメータを送る f.hidden_field-->
+            <%= f.hidden_field :product_id, value: @product.id %>
             <%= f.submit "カートに入れる", class: "btn btn-primary" %>
           </div>
           <% end %>

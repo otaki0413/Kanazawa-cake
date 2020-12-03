@@ -1,0 +1,28 @@
+<div class="container">
+  <h2 class="page-title">配送先編集</h2>
+
+  <%= form_with model: @delivery, url: delivery_goal_path(@delivery.id), method: :patch, local: true do |f| %>
+
+    <div class="form-group row">
+      <%= f.label :postcode, "郵便番号（ハイフンなし）", class: "col-sm-3 delivery-label" %>
+      <div class="col-sm-3">
+        <%= f.text_field :postcode, autofocus: true, autocomplet: "postcode", class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :address, "住所", class: "col-sm-3 delivery-label" %>
+      <div class="col-sm-5">
+        <%= f.text_field :address, autofocus: true, autocomplet: "address", class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :name, "宛名", class: "col-sm-3 delivery-label" %>
+      <div class="col-sm-5">
+        <%= f.text_field :name, autofocus: true, autocomplet: "name", class: "form-control" %>
+      </div>
+    </div>
+    <div class="actions col-sm-8">
+      <%= f.submit "更新する", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

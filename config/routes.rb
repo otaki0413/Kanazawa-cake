@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
 
   # namespace :member do
+  #   get 'delivery_goals/index'
+  #   get 'delivery_goals/create'
+  #   get 'delivery_goals/edit'
+  #   get 'delivery_goals/update'
+  #   get 'delivery_goals/destroy'
+  # end
+  # namespace :member do
   #   get 'orders/index'
   #   get 'orders/new'
   #   get 'orders/show'
@@ -59,14 +66,15 @@ Rails.application.routes.draw do
   delete '/cart_items' => 'mamber/cart_items#all_destroy'
 
   # member/ordersコントローラの追加ルーティング
-  get '/orders/confirm' => 'member/orders#confirm'
+  post '/orders/confirm' => 'member/orders#confirm'
   get '/orders/thanks' => 'member/orders#thanks'
 
-  # member/productsコントローラのルーティング
+
   scope module: :member do
     resources :products, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:index, :create, :show, :new]
+    resources :delivery_goals, only: [:index, :create, :edit, :update, :destroy]
   end
 
 
