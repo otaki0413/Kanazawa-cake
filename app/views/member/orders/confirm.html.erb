@@ -1,2 +1,48 @@
-<h1>Member::Orders#confirm</h1>
-<p>Find me in app/views/member/orders/confirm.html.erb</p>
+<div class="container">
+  <div class="orders_confirm_title">
+    <h3 class="row bg-warning">注文情報確認</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-7">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="tablehead">
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+
+        <% @carts.each do |cart| %>
+        <tbody>
+          <tr>
+            <td><%= cart.product.name %></td>
+            <td><%= cart.tax_included_price.to_s(:delimited) %>円</td>
+            <td><%= cart.amount %></td>
+            <td><%= cart.subtoatl.to_s(:delimited) %>円</td>
+          </tr>
+        </tbody>
+        <& end %>
+      </table>
+    </div>
+
+    <div class="col-sm-5">
+      <table class="table table-bordered">
+        <tr>
+          <th class="tablehead">送料</th>
+          <!--<td><= @order.postage.to_s(:delimited) %>円</td>-->
+        </tr>
+        <tr>
+          <th class="tablehead">商品合計</th>
+          <!--<td><= @total_price.to_s(:delimited) %>円</td>-->
+        </tr>
+        <tr>
+          <th class="tablehead">請求金額</th>
+          <!--<td><= @postage_total_price.to_s(:delimited) %>円</td>-->
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

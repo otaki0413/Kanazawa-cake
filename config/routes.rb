@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   patch '/member/retire' => 'member/members#retire'
 
   # member/cart_itemsコントローラの追加ルーティング
-  delete '/cart_items' => 'mamber/cart_items#all_destroy'
+  delete '/cart_items' => 'member/cart_items#all_destroy'
 
   # member/ordersコントローラの追加ルーティング
   post '/orders/confirm' => 'member/orders#confirm'

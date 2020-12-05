@@ -1,5 +1,5 @@
 class Member::OrdersController < ApplicationController
-  before_action :not_null_cart, only: [:confirm, :new]
+  # before_action :not_null_cart, only: [:confirm, :new]
   before_action :authenticate_member!
 
 
@@ -14,6 +14,10 @@ class Member::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
 
+    # これは関連付けがなされているからできる？？会員IDから引っ張ってきている
+    # orderコントローラに、cart-itemモデルを持ってこれるか
+    @carts = current_member.carts
+
     if params[:address_option] == 0
       # あなたの住所を表示
       @order.postcode = current_member.postcode
@@ -25,6 +29,9 @@ class Member::OrdersController < ApplicationController
       @order.postcode = DeliveryGoal.find(params[:delivery]).postcode
       @order.address = DeliveryGoal.find(params[:delivery]).address
       @order.name = DeliveryGoal.find(params[:derivery]).name
+
+    else params[:address_option] == 2
+      # 新規の住所を表示
 
     end
   end
@@ -54,6 +61,6 @@ class Member::OrdersController < ApplicationController
                                     :total_payment,
                                     :freight,
                                     :status,
-                                    # ordered_products_attributes: [:price, :stock, :product_id])
+                                    ordered_products_attributes: [:price, :stock, :product_id])
   end
 end
