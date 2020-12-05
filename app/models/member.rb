@@ -24,12 +24,14 @@ class Member < ApplicationRecord
     self.postcode + " " + self.address + " " + self.last_name + " " + self.first_name
   end
 
-  # どうしてこんなことできる??
+
   def name
-    [first_name,last_name].join(' ')
+    self.last_name + self.first_name
   end
 
+  # やっていることは上と同じ、文字列の結合
   def kana
-    [first_kana,last_kana].join(' ')
+    [last_name_kana,first_name_kana].join(' ')
   end
+
 end
