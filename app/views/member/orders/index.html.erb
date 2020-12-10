@@ -34,7 +34,7 @@
               <!--order_detailsのまとまりを分類-->
               <% order.order_details.each do |order_item| %>
                 <!--ブロック変数order_item各々に入っている、商品名を取り出す-->
-                <%= order_item.product.name %>
+                <p><%= order_item.product.name %></p>
               <% end %>
             </td>
             <td><%= order.total_payment.to_s(:delimited) %>円</td>

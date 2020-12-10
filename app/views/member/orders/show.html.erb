@@ -1,2 +1,80 @@
-<h1>Member::Orders#show</h1>
-<p>Find me in app/views/member/orders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+
+    <div class="co-sm-12">
+      <div class="col-sm-4">
+        <h3 class="row ml-5 d-inline">注文履歴詳細</h3>
+      </div>
+    </div>
+
+    <div class="row col-sm-12">
+      <div class="col-sm-7">
+        <table class="table table-bordered">
+          <h5>注文情報</h5>
+          <tr>
+            <th class="tablehead">注文日</th>
+            <td><%= l @order.created_at, format: :short %></td>
+          </tr>
+          <tr>
+            <th class="tablehead">配送先</th>
+            <td>
+              <%= @order.postcode %><br>
+              <%= @order.address %><br>
+              <%= @order.name %>
+            </td>
+          </tr>
+          <tr>
+            <th class="tablehead">支払方法</th>
+            <td><%= @order.payment_method_i18n %></td>
+          </tr>
+          <tr>
+            <th class="tablehead">ステータス</th>
+            <td><%= @order.status %></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="col-sm-5">
+        <table class="table table-bordered">
+          <h5>請求情報</h5>
+          <tr>
+            <th class="tablehead">商品合計</th>
+            <td><%= @total_payment.to_s(:delimited) %>円</td>
+          </tr>
+          <tr>
+            <th class="tablehead">配送料</th>
+            <td><%= @order.freight.to_s(:delimited) %>円</td>
+          </tr>
+          <tr>
+            <th class="tablehead">ご請求額</th>
+            <td><%= @freight_total_payment.to_s(:delimited) %>円</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="col-sm-8">
+        <table class="table table-bordered">
+          <h5>注文内容</h5>
+          <thead>
+            <tr>
+              <th>商品</th>
+              <th>単価（税込）</th>
+              <th>個数</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+
+          <% @order.order_details.each do |order_item| %>
+          <tbody>
+            <td><%= order_item.product.name %></td>
+            <td><%= order_item.price.to_s(:delimited) %></td>
+            <td><%= order_item.amount %></td>
+            <td><%= order_item.subtotal %></td>
+          </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

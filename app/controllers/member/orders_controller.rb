@@ -87,10 +87,20 @@ class Member::OrdersController < ApplicationController
   def index
     @orders = current_member.orders.order(created_at: :desc) #新しい物が上に来るように並び替える
     # binding.pry
-    # @order_products = @orders.order_details.find_by(product_id: params[:product_id]).name
   end
 
   def show
+    @order = Order.find(params[:id])
+
+    # 合計金額
+    @total_payment = 0
+    @order.order_details.each do |order_item|
+      @total_payment += order_item.subtotal.to_i
+    end
+
+    # 請求金額
+    @freight_total_payment = @total_payment + @order.freight
+
   end
 
 

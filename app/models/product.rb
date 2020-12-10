@@ -20,7 +20,7 @@ class Product < ApplicationRecord
     (no_tax_price*1.1).round #roundは、数値を四捨五入
   end
 
-
+  
 
 
 end
