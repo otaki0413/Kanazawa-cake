@@ -15,34 +15,75 @@
           </tr>
         </thead>
 
-        <% @carts.each do |cart| %>
+        <% @cart_items.each do |cart| %>
         <tbody>
           <tr>
             <td><%= cart.product.name %></td>
             <td><%= cart.tax_included_price.to_s(:delimited) %>円</td>
             <td><%= cart.amount %></td>
-            <td><%= cart.subtoatl.to_s(:delimited) %>円</td>
+            <td><%= cart.subtotal.to_s(:delimited) %>円</td>
           </tr>
         </tbody>
-        <& end %>
+        <% end %>
       </table>
     </div>
 
-    <div class="col-sm-5">
+
+    <!--ここからフォーム-->
+    <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+    <div class="col-sm-4">
       <table class="table table-bordered">
         <tr>
           <th class="tablehead">送料</th>
-          <!--<td><= @order.postage.to_s(:delimited) %>円</td>-->
+          <td><%= @order.freight.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <th class="tablehead">商品合計</th>
-          <!--<td><= @total_price.to_s(:delimited) %>円</td>-->
+          <td><%= @total_payment.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <th class="tablehead">請求金額</th>
-          <!--<td><= @postage_total_price.to_s(:delimited) %>円</td>-->
+          <td><%= @freight_total_payment.to_s(:delimited) %>円</td>
         </tr>
       </table>
     </div>
+
+    <div class="col-sm-7 row">
+      <div class="col-sm-2">
+        <p class=order-cofirm-strong>
+          <strong>支払い方法</strong>
+        </p>
+      </div>
+      <div class="col-sm-7">
+        <p class=order-cofirm-info><%= @order.payment_method_i18n %></p> <!-- 日本語化 -->
+      </div>
+    </div>
+
+    <div class="col-sm-7 row">
+      <div class="col-sm-2">
+        <p class=order-cofirm-strong>
+          <strong>お届け先</strong>
+        </p>
+      </div>
+      <div class="col-sm-7">
+        <div class=order-cofirm-info>
+          <p><%= @order.postcode %></p>
+          <p><%= @order.address %></p>
+          <p><%= @order.name %></p>
+        </div>
+      </div>
+    </div>
+
+    <!--購入確定ボタン-->
+    <div class="actions row col-sm-12">
+      <!--購入確定前に、@orderに格納するカラムデータをhiddenで送信-->
+      <%= f.hidden_field :postcode, :value => @order.postcode %>
+      <%= f.hidden_field :address, :value => @order.address %>
+      <%= f.hidden_field :name, :value => @order.name %>
+      <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+      <%= f.hidden_field :total_payment, :value => @freight_total_payment %>
+      <%= f.submit '購入を確定する', class: "btn btn-success" %>
+    </div>
+    <% end %>
   </div>
 </div>

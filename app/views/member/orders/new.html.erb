@@ -1,19 +1,35 @@
 <div class="container">
+
+  <!--エラーメッセージ-->
+  <% if @order.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="order-title">
     <h3 class="row bg-warning">注文情報入力</h3>
   </div>
 
   <div class="row bg-warning">
     <div class="col-sm-12">
-      <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
+      <!--このフォームでの入力はすぐにDBに保存しない-->
+      <%= form_with url: orders_confirm_path, method: :get, local: true do |f| %>
 
         <h4>支払い方法</h4>
-
         <div class="form-group">
-          <%= f.radio_button :payment_method, 0 %>
-          <%= f.label :payment_method, 'クレジットカード' %>
-          <%= f.radio_button :payment_method, 1 %>
-          <%= f.label :payment_method, '銀行振込' %>
+          <%= f.radio_button :payment_method, :creditcard, checked: true %>
+          <%= f.label :payment_method, 'クレジットカード', {value: :creditcard} %>
+
+          <%= f.radio_button :payment_method, :bank_transfer %>
+          <%= f.label :payment_method, '銀行振込', {value: :bank_transfer} %>
+
+          <%= f.radio_button :payment_method, :cash_change %>
+          <%= f.label :payment_method, '代金引換', {value: :cash_change} %>
         </div>
 
         <h4>お届け先</h4>
@@ -42,12 +58,12 @@
             <%= f.radio_button :address_option, 2 %>
             <%= f.label :address, '新しいお届け先' %>
             <div class="row">
-              <div class="col-sm-3">郵便番号(ハイフンなし)</div>
-              <div class="col-sm-8"><%= f.text_field :postcode, placeholder: "郵便番号"%></div>
-              <div class="col-sm-3">住所</div>
-              <div class="col-sm-8"><%= f.text_field :address, placeholder: "住所" %></div>
-              <div class="col-sm-3">宛名</div>
-              <div class="col-sm-6"><%= f.text_field :name, placeholder: "宛名" %></div>
+              <div class="col-sm-2">郵便番号(ハイフンなし)</div>
+              <div class="col-sm-10"><%= f.text_field :postcode, placeholder: "郵便番号"%></div>
+              <div class="col-sm-2">住所</div>
+              <div class="col-sm-10"><%= f.text_field :address, placeholder: "住所" %></div>
+              <div class="col-sm-2">宛名</div>
+              <div class="col-sm-10"><%= f.text_field :name, placeholder: "宛名" %></div>
             </div>
           </div>
         </div>
@@ -56,7 +72,9 @@
         <div class="actions">
           <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
         </div>
+
       <% end %>
+      <!--フォームここまで-->
     </div>
   </div>
 </div>

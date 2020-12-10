@@ -66,7 +66,7 @@ Rails.application.routes.draw do
   delete '/cart_items' => 'member/cart_items#all_destroy'
 
   # member/ordersコントローラの追加ルーティング
-  post '/orders/confirm' => 'member/orders#confirm'
+  get '/orders/confirm' => 'member/orders#confirm'
   get '/orders/thanks' => 'member/orders#thanks'
 
 
