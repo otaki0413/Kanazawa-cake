@@ -1,14 +1,10 @@
 <div class="container">
-  <h3 class="page-title"><%= @member.last_name + @member.first_name %>さんの会員情報編集</h3>
+  <h3 class="page-title"><%= @member.name %>さんの会員データ編集</h3>
   <strong class="nav-message">こちらから情報編集</strong>
-
-  <div class="">
-
-  </div>
 
   <%= form_with model: @member, url: admin_member_path, method: :patch, local: true do |f| %>
 
-    <div class="form-group row ">
+    <div class="form-group row signup_form">
       <%= f.label :name, "名前", class: "col-sm-4 col-form-label" %>
       <div class="col-sm-2">
         <%= f.text_field :last_name, autofocus: true, autocomplet: "last_name", class: "form-control", placeholder: "山田" %>
@@ -18,7 +14,7 @@
       </div>
     </div>
 
-    <div class="form-group row signup_form">
+    <div class="form-group row ">
       <%= f.label :name, "フリガナ", class: "col-sm-4 col-form-label" %>
       <div class="col-sm-2">
         <%= f.text_field :last_name_kana, autofocus: true, autocomplet: "last_name_kana", class: "form-control", placeholder: "ヤマダ" %>
@@ -55,12 +51,13 @@
     <div class="form-group row signup_form">
       <%= f.label :is_deleted, "会員ステータス", class: "col-sm-4 col-form-label" %>
       <div class="col-sm-2">
-        <%= f.label :is_deleted, '有効' %>
+        <%= f.label :is_deleted, '有効', class: "text-primary" %>
         <%= f.radio_button :is_deleted, :false, checked: true %>
-        <%= f.label :is_deleted, '退会済み' %>
+        <%= f.label :is_deleted, '退会済み', class: "text-danger" %>
         <%= f.radio_button :is_deleted, :true %>
       </div>
     </div>
+    <!--変更ボタン-->
     <div class="actions member-edit-btn">
       <%= f.submit '変更を保存', class: 'btn btn-primary' %>
     </div>

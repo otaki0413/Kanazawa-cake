@@ -1,9 +1,10 @@
 class Member::ProductsController < ApplicationController
-  before_action :authenticate_member!
+  # before_action :authenticate_member!
 
   def index
     @genres = Genre.all
-    @products = Product.all
+    @products = Product.all.page(params[:page]).per(12)
+    # 1ページあたりに表示する商品数を8に！カミナリで調整
 
   end
 
@@ -14,5 +15,5 @@ class Member::ProductsController < ApplicationController
     @cart_item = CartItem.new
   end
 
-  
+
 end

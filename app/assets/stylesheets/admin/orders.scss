@@ -1,0 +1,18 @@
+// Place all the styles related to the admin::orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// 注文テーブル微調整、ここのcssが効かない
+
+.order-data {
+  padding-top: 15px;
+  line-height: 45px;
+}
+
+
+// 請求金額合計の下線と色
+.bd-org {
+  border-bottom: 2px solid darkorange;
+  font-size: 20px;
+}

@@ -10,68 +10,79 @@
   </head>
 
   <body>
-    <header>
+    <div class="footerFixed">
+      <header>
+        <div class="container">
+          <!--ナビゲーションに、フレックスボックスをかけるか？-->
+          <nav class="nav navbar-nav navbar-left">
+            <a href="/">ここにロゴが入ります</a>
+          </nav>
+          <nav id="sidemenu">
+            <ul class="nav navbar-nav navbar-right">
+              <!--管理者サインインー-->
+              <% if admin_signed_in? %>
+                <li class="nav-link">
+                  <%= link_to "商品一覧", admin_products_path, class: "btn btn-default nav-btn" %>
+                </li>
+                <li class="nav-link">
+                  <%= link_to "会員一覧", admin_members_path, class: "btn btn-default nav-btn" %>
+                </li>
+                <li class="nav-link">
+                  <%= link_to "注文履歴一覧", admin_orders_path, class: "btn btn-default nav-btn" %>
+                </li>
+                <li class="nav-link">
+                  <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-default nav-btn" %>
+                </li>
+                <li class="nav-link">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-default nav-btn" %>
+                </li>
+              <!--会員サインインー-->
+              <% elsif member_signed_in? %>
+                <p class="login-name-message">ようこそ<%= current_member.name %>さん!!</p>
+                <li class="nav-link">
+                  <%= link_to "マイページ", member_path, class: "btn btn-default nav-btn" %>
+                </li>
+                <li class="nav-link">
+                  <%= link_to "商品一覧", products_path, class: "btn btn-default nav-btn" %>
+                </li>
+                <li class="nav-link">
+                  <%= link_to "カート", cart_items_path, class: "btn btn-default nav-btn" %>
+                </li>
+                <li class="nav-link">
+                  <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-default nav-btn" %>
+                </li>
+              <!--ログアウト時-->
+              <% else %>
+                <li class="nav-link">
+                  <%= link_to "About", about_path, class: "btn btn-default nav-btn" %>
+                </li>
+                <li class="nav-link">
+                  <%= link_to "商品一覧", products_path, class: "btn btn-default nav-btn" %>
+                </li>
+                <li class="nav-link">
+                  <%= link_to "新規登録", new_member_registration_path, class: "btn btn-default nav-btn" %>
+                </li>
+                <!--会員のみで良い-->
+                <li class="nav-link">
+                  <%= link_to "ログイン", new_member_session_path, class: "btn btn-default nav-btn" %>
+                </li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
       <div class="container">
-        <!--ナビゲーションに、フレックスボックスをかけるか？-->
-        <nav class="nav navbar-nav navbar-left">
-          <img>ここにロゴが入ります</img>
-        </nav>
-        <nav id="sidemenu">
-          <ul class="nav navbar-nav navbar-right">
-            <!--管理者サインインー-->
-            <% if admin_signed_in? %>
-              <li class="nav-link">
-                <%= link_to "商品一覧", admin_products_path, class: "btn btn-default nav-btn" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "会員一覧", admin_members_path, class: "btn btn-default nav-btn" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "注文履歴一覧", class: "btn btn-default nav-btn" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-default nav-btn" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-default nav-btn" %>
-              </li>
-            <!--会員サインインー-->
-            <% elsif member_signed_in? %>
-              <p class="login-name-message">ようこそ<%= current_member.last_name + current_member.first_name %>さん!!</p>
-              <li class="nav-link">
-                <%= link_to "マイページ", member_path, class: "btn btn-default nav-btn" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "商品一覧", products_path, class: "btn btn-default nav-btn" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "カート", cart_items_path, class: "btn btn-default nav-btn" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-default nav-btn" %>
-              </li>
-            <!--ログアウト時-->
-            <% else %>
-              <li class="nav-link">
-                <%= link_to "About", about_path, class: "btn btn-default nav-btn" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "商品一覧", products_path, class: "btn btn-default nav-btn" %>
-              </li>
-              <li class="nav-link">
-                <%= link_to "新規登録", new_member_registration_path, class: "btn btn-default nav-btn" %>
-              </li>
-              <!--会員のみで良い-->
-              <li class="nav-link">
-                <%= link_to "ログイン", new_member_session_path, class: "btn btn-default nav-btn" %>
-              </li>
-            <% end %>
-          </ul>
-        </nav>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
       </div>
-    </header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+      <%= yield %>
+
+      <footer>
+        <div class="container">
+          <p><small>&copy; 2020 KanazawaCake</small></p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

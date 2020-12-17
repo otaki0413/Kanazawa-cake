@@ -1,26 +1,41 @@
 <div class="container">
-  <h1>ここはトップページです</h1>
   <div class="row">
     <div class="col-sm-2">
       <div class="genre-serch-box">
         <p class="genre-serch-text"><strong>ジャンル検索</strong></p>
-        <p class="genre-name">ケーキ</p>
-        <p class="genre-name">焼き菓子</p>
-        <p class="genre-name">プリン</p>
-        <p class="genre-name">キャンディ</p>
+        <% @genres.each do |genre| %>
+          <p class="genre-name"><%= genre.name %></p>
+        <% end %>
       </div>
     </div>
-    <div class="col-sm-10 bg-success">
-      <h2>商品一覧</h2>
-      <div class="product-boxes">
-      <% @products.each do |product| %>
-        <div class="product-box">
-          <%= attachment_image_tag product, :image, :fill, 230, 150, format: 'jpeg', class: "img-rounded profile-img", fallback: "no_image.jpg" %>
-          <p><%= link_to product.name, product_path(product.id) %></p>
-          <p>￥<%= product.no_tax_price %></p>
-        </div>
-      <% end %>
+
+    <div class="col-sm-10">
+      <h2 class="page-title"></h2>
+      <div class="top-box">
+        <p class="top-msg">
+          ようこそ！KanazawaCakeへ！<br>
+          このサイトはケーキ販売のECサイトになります！<br>
+          会員にならなくても、商品の閲覧は可能ですが、<br>
+          購入する際は、会員登録は必須になります。<br>
+        </p>
       </div>
+    </div>
+
+    <div class="col-sm-10">
+      <h2 class="page-title">オススメ商品</h2>
+      <div class="product-boxes">
+      　<% @products.each do |product| %>
+          <div class="product-box">
+            <%= link_to product_path(product) do %>
+              <%= attachment_image_tag product, :image, :fill, 230, 150, format: 'jpeg', class: "img-rounded profile-img", fallback: "no_image.jpg" %>
+            <% end %>
+            <p></p>
+            <%= link_to product.name, product_path(product.id), class: "product-name" %>
+            <p>￥<%= product.no_tax_price.to_s(:delimited) %></p>
+          </div>
+        <% end %>
+      </div>
+      <%= link_to "もっと見る", products_path, class: "products-link" %>
     </div>
   </div>
 </div>

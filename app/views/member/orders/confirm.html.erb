@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="orders_confirm_title">
-    <h3 class="row bg-warning">注文情報確認</h3>
+  <div>
+    <h3 class="row page-title">注文情報確認</h3>
   </div>
 
   <div class="row">
     <div class="col-sm-7">
       <table class="table table-bordered">
         <thead>
-          <tr class="tablehead">
+          <tr class="tablehead category">
             <th>商品名</th>
             <th>単価（税込）</th>
             <th>数量</th>
@@ -34,15 +34,15 @@
     <div class="col-sm-4">
       <table class="table table-bordered">
         <tr>
-          <th class="tablehead">送料</th>
+          <th class="tablehead category">送料</th>
           <td><%= @order.freight.to_s(:delimited) %>円</td>
         </tr>
         <tr>
-          <th class="tablehead">商品合計</th>
+          <th class="tablehead category">商品合計</th>
           <td><%= @total_payment.to_s(:delimited) %>円</td>
         </tr>
         <tr>
-          <th class="tablehead">請求金額</th>
+          <th class="tablehead category">請求金額</th>
           <td><%= @freight_total_payment.to_s(:delimited) %>円</td>
         </tr>
       </table>
@@ -82,7 +82,7 @@
       <%= f.hidden_field :name, :value => @order.name %>
       <%= f.hidden_field :payment_method, :value => @order.payment_method %>
       <%= f.hidden_field :total_payment, :value => @freight_total_payment %>
-      <%= f.submit '購入を確定する', class: "btn btn-success" %>
+      <%= f.submit '購入を確定する', "data-confirm" => "購入を確定しますか？", class: "btn btn-success" %>
     </div>
     <% end %>
   </div>

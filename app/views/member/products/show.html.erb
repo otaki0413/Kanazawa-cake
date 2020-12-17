@@ -1,6 +1,6 @@
 <div class="container">
-  <h1>ここは商品詳細です</h1>
   <div class="row">
+
     <div class="col-sm-2">
       <div class="genre-serch-box">
         <p class="genre-serch-text"><strong>ジャンル検索</strong></p>
@@ -9,31 +9,32 @@
         <% end %>
       </div>
     </div>
-    <div class="col-sm-10 bg-success">
-      <h2>商品詳細</h2>
-      <div class="product-info">
-        <div class="col-sm-6 bg-warning ">
-          <%= attachment_image_tag @product, :image, :fill, 330, 250, format: 'jpeg', class: "img-rounded profile-img", fallback: "no_image.jpg" %>
-        </div>
-        <div class="col-sm-6 bg-warning">
-          <h2><%= @product.name %></h2>
-          <p><%= @product.introduction %></p>
-          <h3>￥<%= @product.tax_included_price %><small>(税込）</small> </h3>
 
-          <!--ここからカートに商品データ追加-->
+    <div class="col-sm-10 product-show">
+      <h2 class="page-title"></h2>
+      <div>
+        <div class="col-sm-6">
+          <%= attachment_image_tag @product, :image, :fill, 400, 250, format: 'jpeg', class: "img-rounded profile-img", fallback: "no_image.jpg" %>
+        </div>
+        <div class="col-sm-6">
+          <h2 class="product-name"><%= @product.name %></h2>
+          <p><%= @product.introduction %></p>
+          <h2>￥<%= @product.tax_included_price %><small>(税込）</small></h2>
+
+          <!--カートに商品データ追加-->
           <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
-            <div class="form-group col-sm-5">
-              <%= f.number_field :amount, class: "form-control", placeholder: "何個ほしい？？", min: 1, max: 10 %>
+            <div class="form-group col-sm-5 amount-form">
+              <%= f.number_field :amount, class: "form-control", placeholder: "何個必要ですか？？", min: 1, max: 10 %>
             </div>
-            <div class="actions col-sm-5">
+            <div class="form-group col-sm-5 cartin-form">
               <!--viewからコントローラに直接パラメータを送る f.hidden_field-->
               <%= f.hidden_field :product_id, value: @product.id %>
-              <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+              <%= f.submit "カートに入れる", class: "btn btn-primary btn-lg" %>
             </div>
           <% end %>
-
         </div>
       </div>
     </div>
+
   </div>
 </div>

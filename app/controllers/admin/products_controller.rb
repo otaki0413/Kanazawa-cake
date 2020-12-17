@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @products = Product.all
@@ -11,9 +12,12 @@ class Admin::ProductsController < ApplicationController
   # 商品新規登録
   def create
     @newproduct = Product.new(product_params)
-    @newproduct.save
-    flash[:notice] = "You have created product successfully."
-    redirect_to admin_product_path(@newproduct.id)
+    if @newproduct.save
+      flash[:notice] = "You have created product successfully."
+      redirect_to admin_product_path(@newproduct.id)
+    else
+      render :new
+    end
   end
 
   def show
@@ -24,12 +28,17 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  
   def update
     @product = Product.find(params[:id])
-    @product.update(product_params)
-    flash[:notice] = "You have updated product successfully."
-    redirect_to admin_products_path
+    if @product.update(product_params)
+      flash[:notice] = "You have updated product successfully."
+      redirect_to admin_products_path
+    else
+      render :edit
+    end
   end
+  
 
   def destroy
     product = Product.find(params[:id])

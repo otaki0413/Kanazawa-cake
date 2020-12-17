@@ -1,11 +1,12 @@
 class Member::CartItemsController < ApplicationController
   before_action :authenticate_member!
+  # before_action :not_null_cart_item
 
   def index
     @cart_item = CartItem.new #エラーメッセージ用
     @cart_items = current_member.cart_items # @cart_items = CartItem.all → これだと他のユーザーのカート情報も含んでしまう。
 
-    # 合計金額は、0スタートの小計追加ごとに増加していく
+    # 合計金額は、0スタートで小計追加ごとに増加していく
     @total_price = 0
     @cart_items.each do |cart|
       @total_price += cart.subtotal
@@ -76,4 +77,12 @@ class Member::CartItemsController < ApplicationController
   def cart_item_params
     params.require(:cart_item).permit(:amount, :product_id, :member_id)
   end
+
+  # #カートアイテムの個数がNullであればredirect_back
+  # def not_null_cart_item
+  #   if current_member.cart_items.empty?
+  #     flash[:alert] = "個数を入力して下さい！"
+  #     redirect_back(fallback_location: root_path)
+  #   end
+  # end
 end

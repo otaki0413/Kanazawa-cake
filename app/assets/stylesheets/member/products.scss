@@ -2,16 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// 会員側---------------------------------
 
 // 商品一覧ページ
-.col-sm-2 {
-  // margin-right: 20px;
-}
-
+// ジャンル部分
 .genre-serch-box {
   height: 463px;
   border: 1px solid gray;
+  border-radius: 10px;
   padding: 5px;
+  background-color: LightSeaGreen;
+  opacity: 0.9;
 }
 .genre-serch-text {
   text-align: center;
@@ -19,22 +20,48 @@
   font-size: 22px;
 }
 .genre-name {
-  // padding: 0 0 10px 50px;
   text-align: left;
   font-size: 18px;
+  color: White;
+  font-weight: bold;
+  padding-left: 5px;
 }
 
 // 画面右側
 .product-boxes {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-//   width: 1200px;
+  // justify-content: space-between;
+  width: 1000px;
 //   height: 550px;
 }
 .product-box {
   width: 230px;
   height: 150px;
-  border: 1px solid black;
-  margin-bottom: 50px;
+  margin-right: 10px;
+  margin-bottom: 70px;
+  .product-name {
+    font-weight: bold;
+    padding-top: 20px;
+    color: black;
+    border-bottom: 1px solid darkorange;
+  }
+  .product-name:hover {
+    text-decoration: none;
+    color: green;
+  }
+}
+
+// 商品詳細
+.product-show {
+  .product-name {
+    font-weight: bold;
+    font-size: 3rem;
+  }
+  .amount-form {
+    margin-top: 15px;
+  }
+  .cartin-form {
+    margin-top: 10px;
+  }
 }

@@ -3,21 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// マイページ
+// マイページの中見出し
 .info-heading {
   line-height: 34px;
   font-size: 1.8rem;
+  font-weight: bold;
 }
+// ボタンの間隔
 .nav-row .btn-primary {
   margin-right: 20px;
 }
-.category {
-  background: #f6efdb;
-}
+
 .unsubscribe {
   padding-right: 250px;
 }
 .unsubscribe .btn {
   padding: 5px 25px;
   float: right;
+}
+
+// マイページのテーブル
+.mypage-table {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  .category {
+    // background: bisque;
+  }
 }

@@ -10,14 +10,15 @@
     <% end %>
   <% end %>
 
-    <div class="box col-12">
-      <div class="col-sm-4 bg-warning">
-        <h3 class="table-title">ショッピングカート</h3>
+
+    <div class="box col-sm-12 cart-table">
+      <div class="col-sm-4">
+        <h3 class="page-title">ショッピングカート</h3>
       </div>
       <!--ここからカートテーブル-->
       <table class="table table-hover table-bordered">
         <thead>
-          <tr>
+          <tr class="category">
             <th>商品名</th>
             <th>単価（税込）</th>
             <th>数量</th>
@@ -46,24 +47,28 @@
             <!--小計-->
             <td><%= cart.subtotal.to_s(:delimited) %>円</td>
             <td>
-              <%= link_to '削除する', cart_item_path(cart.id), class: "btn btn-danger", method: :delete, "data-confirm" => "Are you sure?" %>
+              <%= link_to '削除する', cart_item_path(cart.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか?" %>
             </td>
           </tr>
         </tbody>
         <% end %>
       </table>
 
-      <!--CSSで合計金額の表を作る-->
-      <table class="bg-warning">
-        <tr>
-          <th>合計金額</th>
-          <td><%= @total_price.to_s(:delimited) %></td>
-        </tr>
-      </table>
+      <div class="row">
+        <div class="col-sm-3 total_price">
+          <table class="table table-bordered">
+            <tr>
+              <th class="category">合計金額</th>
+              <td><%= @total_price.to_s(:delimited) %>円</td>
+            </tr>
+          </table>
+        </div>
 
-      <div class="btn-all-destroy">
-        <%= link_to 'カートを空にする', cart_items_path, class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか?" %>
+        <div class="btn-all-destroy">
+          <%= link_to 'カートを空にする', cart_items_path, class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか?" %>
+        </div>
       </div>
+
 
       <div class="btn-large">
         <%= link_to '買い物を続ける', products_path, class: "btn btn-primary btn-lg" %>

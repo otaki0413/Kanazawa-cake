@@ -1,8 +1,9 @@
 class Member::HomesController < ApplicationController
 
-  # なぜここで、Productモデルを使えるの？？アソシエーションなしで、他モデルを参照できる？
   def top
-    @products = Product.all
+    # オススメ商品を4つ表示
+    @products = Product.first(4)
+    @genres = Genre.all
   end
 
   def about

@@ -1,3 +1,22 @@
 // Place all the styles related to the admin::genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.genre-add {
+  margin-left: 50px;
+  .genre-add-name {
+    margin-right: 10px;
+  }
+  .genre-btn {
+    margin-left: 10px;
+  }
+}
+
+// ジャンルのテーブル (微調整)
+.genre-table {
+  margin-left: 295px;
+  margin-top: 50px;
+  .genre-data {
+    padding-top: 15px;
+  }
+}

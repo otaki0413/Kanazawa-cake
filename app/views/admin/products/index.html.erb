@@ -1,17 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="box col-12">
-      <div class="col-md-6 bg-warning">
-        <h3 class="table-title">商品一覧</h3>
-      </div>
-      <div class="btn bg-success">
-        <%= link_to '商品登録はこちらへ', new_admin_product_path %>
-      </div>
+    <div class="col-sm-6">
+      <h3 class="page-title">商品一覧</h3>
+    </div>
 
-      <!--ここから商品一覧-->
+    <div class="col-sm-2 new-product-link">
+      <%= link_to '商品登録はこちらへ', new_admin_product_path, class: "btn btn-success" %>
+    </div>
+
+    <!--ここから商品一覧-->
+    <div class="col-sm-10 product-table">
       <table class="table table-hover">
-        <thead class="thead-light">
-          <tr>
+        <thead>
+          <tr class="category">
             <th>商品ID</th>
             <th>商品名</th>
             <th>税抜価格</th>
@@ -23,14 +24,14 @@
         <tbody>
           <tr>
             <th><%= product.id %></th>
-            <td><%= link_to product.name, admin_product_path(product.id) %></td>
-            <td><%= product.no_tax_price %>円</td>
+            <td><%= link_to product.name, admin_product_path(product.id), class: "product-link" %></td>
+            <td><%= product.no_tax_price.to_s(:delimited) %>円</td>
             <td><%= product.genre.name %></td>
             <td>
               <% if product.is_active == true %>
-              <strong>販売中</strong>
+              <strong class="sell">販売中</strong>
               <% else %>
-              <strong>売切れ</strong>
+              <strong class="sell-out">売切れ</strong>
               <% end %>
             </td>
           </tr>
@@ -38,5 +39,6 @@
         <% end %>
       </table>
     </div>
+
   </div>
 </div>

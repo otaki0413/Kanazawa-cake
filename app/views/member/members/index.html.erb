@@ -3,51 +3,51 @@
   <div class="row">
     <div class="col-sm-8">
       <!--<div class="mypage-info">-->
-      <div class="nav-row bg-success col-sm-12">
-        <p class="col-sm-3 bg-danger info-heading"><strong>登録情報</strong></p>
+      <div class="nav-row col-sm-12">
+        <p class="col-sm-2 info-heading">登録情報</p>
         <%= link_to "編集する", member_edit_path, class: "btn btn-primary col-sm-3" %>
-        <%= link_to "パスワードを変更する", member_edit_path, class: "btn btn-primary col-sm-3" %>
+        <%= link_to "パスワード変更", member_edit_path, class: "btn btn-primary col-sm-3" %>
       </div>
-      <table class="table table-bordered mypage-table">
-        <tbody>
-          <tr>
-            <th class="category">氏名</th>
-            <td><%= current_member.name %></td>
-          </tr>
-          <tr>
-            <th class="category">カナ</th>
-            <td><%= current_member.kana %></td>
-          </tr>
-          <tr>
-            <th class="category">郵便番号</th>
-            <td><%= current_member.postcode %></td>
-          </tr>
-          <tr>
-            <th class="category">住所</th>
-            <td><%= current_member.address %></td>
-          </tr>
-          <tr>
-            <th class="category">電話番号</th>
-            <td><%= current_member.phone_number %></td>
-          </tr>
-          <tr>
-            <th class="category">メールアドレス</th>
-            <td colspan="2"><%= current_member.email %></td>
-          </tr>
-        </tbody>
-      </table>
 
-      <div class="nav-row bg-success col-sm-12">
-        <p class="col-sm-2 bg-danger info-heading">
-          <strong>配送先</strong>
-        </p>
+      <!--ここからマイページテーブル-->
+      <div class="mypage-table col-sm-12">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th class="category">氏名</th>
+              <td><%= current_member.name %></td>
+            </tr>
+            <tr>
+              <th class="category">カナ</th>
+              <td><%= current_member.kana %></td>
+            </tr>
+            <tr>
+              <th class="category">郵便番号</th>
+              <td><%= current_member.postcode %></td>
+            </tr>
+            <tr>
+              <th class="category">住所</th>
+              <td><%= current_member.address %></td>
+            </tr>
+            <tr>
+              <th class="category">電話番号</th>
+              <td><%= current_member.phone_number %></td>
+            </tr>
+            <tr>
+              <th class="category">メールアドレス</th>
+              <td colspan="2"><%= current_member.email %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="nav-row col-sm-12">
+        <p class="col-sm-2 info-heading">配送先</p>
         <%= link_to "一覧を見る", delivery_goals_path, class: "btn btn-primary col-sm-4" %>
       </div>
 
-      <div class="nav-row bg-success col-sm-12">
-        <p class="col-sm-2 bg-danger info-heading">
-          <strong>注文履歴</strong>
-        </p>
+      <div class="nav-row col-sm-12">
+        <p class="col-sm-2 info-heading">注文履歴</p>
         <%= link_to "一覧を見る", orders_path, class: "btn btn-primary col-sm-4" %>
       </div>
       <!--</div>-->
