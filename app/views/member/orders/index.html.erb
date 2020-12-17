@@ -4,13 +4,13 @@
 
     <div class="box col-12">
       <div class="col-sm-4">
-        <h3 class="table-title">注文履歴一覧</h3>
+        <h3 class="page-title">注文履歴一覧</h3>
       </div>
 
       <!--ここから注文履歴テーブル-->
-      <table class="table table table-bordered">
+      <table class="table  table-bordered">
         <thead>
-          <tr>
+          <tr class="category">
             <th>注文日</th>
             <th>配送先</th>
             <th>注文商品</th>
@@ -34,7 +34,7 @@
               <!--order_detailsのまとまりを分類-->
               <% order.order_details.each do |order_item| %>
                 <!--ブロック変数order_item各々に入っている、商品名を取り出す-->
-                <%= order_item.product.name %>
+                <p><%= order_item.product.name %></p>
               <% end %>
             </td>
             <td><%= order.total_payment.to_s(:delimited) %>円</td>

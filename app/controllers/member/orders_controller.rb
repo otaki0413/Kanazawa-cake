@@ -1,5 +1,6 @@
 class Member::OrdersController < ApplicationController
-  # before_action :not_null_cart, only: [:confirm, :new]
+
+  before_action :not_null_cart_item, only: [:new, :confirm]
   before_action :authenticate_member!
 
   #注文者情報を入力する
@@ -13,7 +14,6 @@ class Member::OrdersController < ApplicationController
   # 注文情報確認--------------------------------------------------
   def confirm
     @order = Order.new
-    # orderコントローラに、cart-itemモデルを持ってこれるか
     @cart_items = current_member.cart_items # これは関連付けがなされているからできる？？会員IDから引っ張ってきている?
 
     # 支払い方法
@@ -55,10 +55,8 @@ class Member::OrdersController < ApplicationController
 
     @order = Order.new(order_params)
     @order.member_id = current_member.id
-    # binding.pry
 
     if @order.save
-      # binding.pry
       # 注文データを注文詳細のDBにも保存する
       @current_items = current_member.cart_items
       @current_items.each do |item|
@@ -67,10 +65,9 @@ class Member::OrdersController < ApplicationController
         @order_detail.order_id = @order.id  #orderがセーブされたあとじゃないといけない。
         @order_detail.price = item.product.tax_included_price
         @order_detail.amount = item.amount
-        # binding.pry
         @order_detail.save
       end
-      # binding.pry
+
       @current_items.destroy_all # 現時点でのカートアイテムのデータを全て削除
       redirect_to orders_thanks_path
     else
@@ -87,10 +84,20 @@ class Member::OrdersController < ApplicationController
   def index
     @orders = current_member.orders.order(created_at: :desc) #新しい物が上に来るように並び替える
     # binding.pry
-    # @order_products = @orders.order_details.find_by(product_id: params[:product_id]).name
   end
 
   def show
+    @order = Order.find(params[:id])
+
+    # 合計金額
+    @total_payment = 0
+    @order.order_details.each do |order_item|
+      @total_payment += order_item.subtotal.to_i
+    end
+
+    # 請求金額
+    @freight_total_payment = @total_payment + @order.freight
+
   end
 
 
@@ -99,4 +106,13 @@ class Member::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:member_id, :name, :postcode, :address, :payment_method, :total_payment, :freight, :status, :address_option)
   end
+
+  #カートがNullであればredirect_back
+  def not_null_cart_item
+    if current_member.cart_items.empty?
+      flash[:alert] = "カートに商品を入れてください!!"
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
 end

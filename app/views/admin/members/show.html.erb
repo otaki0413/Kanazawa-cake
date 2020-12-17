@@ -1,20 +1,27 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8">
-      <h2 class="page-title"><%= @member.last_name + @member.first_name %>さんの会員詳細</h2>
-      <table class="table table-bordered mypage-table">
+      <h3 class="page-title"><%= @member.name %>さんの会員データ</h3>
+      <table class="table table-bordered member-table">
         <tbody>
           <tr>
             <th class="category">顧客ID</th>
-            <td><%= @member.id %></td>
+            <td>
+              <%= @member.id %>
+              <% if @member.is_deleted == true %>
+                <span class="btn btn-danger btn-sm true-member">退会済み</span>
+              <% else %>
+                <span class="btn btn-success btn-sm false-member">有効会員</span>
+              <% end %>
+            </td>
           </tr>
           <tr>
             <th class="category">氏名</th>
-            <td><%= @member.last_name + @member.first_name %></td>
+            <td><%= @member.name%></td>
           </tr>
           <tr>
             <th class="category">フリガナ</th>
-            <td><%= @member.last_name_kana + @member.first_name_kana %></td>
+            <td><%= @member.kana %></td>
           </tr>
           <tr>
             <th class="category">郵便番号</th>
@@ -37,10 +44,9 @@
 
       <div class="nav-row col-sm-7">
         <%= link_to "編集する",  edit_admin_member_path, class: "btn btn-primary col-sm-5" %>
-        <%= link_to "注文履歴一覧へ", member_edit_path, class: "btn btn-primary col-sm-5" %>
+        <%= link_to "注文履歴一覧へ", admin_orders_path, class: "btn btn-primary col-sm-5" %>
       </div>
 
     </div>
-
   </div>
 </div>

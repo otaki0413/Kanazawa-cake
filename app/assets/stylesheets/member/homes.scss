@@ -1,3 +1,25 @@
 // Place all the styles related to the member::homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// トップページ-----------------------
+
+// メッセージ部分
+.top-box {
+  text-align: center;
+  .top-msg {
+    background-color: peru;
+    font-size: 25px;
+    color: white;
+    margin-bottom: 40px;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid gray;
+    border-radius: 30px;
+    display: inline-block;
+  }
+}
+.products-link {
+  float: right;
+}

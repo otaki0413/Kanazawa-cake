@@ -46,7 +46,7 @@
         <td><%= delivery.name %></td>
         <td class="delivery-btns">
           <%= link_to '編集する', edit_delivery_goal_path(delivery.id), class: "btn btn-primary" %>
-          <%= link_to '削除する', delivery_goal_path(delivery.id), method: :delete, class: "btn btn-danger" %>
+          <%= link_to '削除する', delivery_goal_path(delivery.id), method: :delete, "data-confirm" => "Are you sure?", class: "btn btn-danger" %>
         </td>
       </tr>
     </tbody>

@@ -3,7 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+// ここからadmin----------------------------------------------------
+
+// 会員一覧
+.members-table {
+  margin-left: 195px;
+}
+
+
+.btn-sm .true-member, .false-member {
+  margin-left: 20px;
+  padding: 3px 6px;
+}
+
 // 会員編集ボタン
 .member-edit-btn {
   margin-right: 190px;
 }
+
+// ここまで-------------------------------------------------------------
+

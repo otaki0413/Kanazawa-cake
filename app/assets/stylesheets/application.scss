@@ -22,11 +22,32 @@
    box-sizing: border-box;
  }
 
+// 共通レイアウト
+.page-title {
+  font-weight: bold;
+  margin-bottom: 50px;
+  // display: inline-block;
+  // padding-bottom: 2px;
+  // border-bottom: 5px double red;
+  small {
+    color: black;
+  }
+}
+.category {
+  background: #f6efdb;
+}
+.notice {
+  color: green;
+}
+.alert {
+  color: red;
+}
+
+
 // ヘッダーナビゲーション
 .navlink {
   // margin-right: 10px;
 }
-
 .nav-btn {
   margin: 10px;
 }
@@ -37,9 +58,7 @@
 }
 
 // 会員のログインページ
-.page-title {
-  margin-bottom: 50px;
-}
+
 .nav-message {
   background: #d7cebb;
   padding: 3px;
@@ -68,18 +87,42 @@
 .registration-message {
   text-align: left;
   margin-top: 20px;
+  margin-left: 120px;
 }
 
-// 会員のサインアップページ
+// 会員のサインアップ
 .form-group {
   // background: yellow;
 }
-.signup-form {
-  text-align: left;
-}
+// .signup-form {
+//   text-align: left;
+// }
 
 // ページ上部のログイン確認
 .login-name-message {
   font-weight: bold;
   color: orange;
+}
+
+
+
+// フッターのレイアウト
+.footerFixed{
+  min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
+  position: relative;/* ←相対位置 */
+  padding-bottom: 76px; /* ←フッターの高さを指定 */
+  box-sizing: border-box;
+  /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
+}
+footer {
+  position: absolute;/* ←絶対位置 */
+  bottom: 0;
+  background: #622d18;
+  text-align: center;
+  padding: 26px 0;
+  width: 100%;
+  p small {
+    color: white;
+    font-size: 1rem;
+  }
 }

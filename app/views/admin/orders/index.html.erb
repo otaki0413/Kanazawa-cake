@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row col-sm-10">
+
+    <div class="col-sm-10">
+      <div class="col-sm-4">
+        <h3 class="page-title">注文履歴一覧</h3>
+      </div>
+    </div>
+
+    <!--ここから注文履歴テーブル-->
+    <div class="col-sm-10 order-table">
+      <table class="table table-hover">
+        <thead>
+          <tr class="category">
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+            <th>注文詳細</th>
+          </tr>
+        </thead>
+        <% @orders.each do |order| %>
+        <tbody>
+          <tr>
+            <td class="order-data"><%= l order.created_at, format: :short %></td>
+            <td class="order-data"><%= order.member.name %></td>
+            <td class="order-data">
+              <% @total_amount = 0 %>
+              <% order.order_details.each do |item|
+                  @total_amount += item.amount.to_i
+                 end %>
+              <%= @total_amount %>
+            </td>
+            <td class="order-data"><%= order.status %></td>
+            <td class="order-data"><%= link_to '表示する', admin_order_path(order.id), class: "btn btn-primary btn-sm" %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+
+  </div>
+</div>

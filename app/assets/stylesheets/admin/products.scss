@@ -1,3 +1,54 @@
 // Place all the styles related to the admin::products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//ここからadmin側-------------------------------
+
+
+// 商品追加リンク
+.new-product-link {
+  margin-top: 50px;
+  margin-left: 300px;
+  // color: #FFF;
+}
+
+// 商品テーブル
+.product-table {
+  margin-left: 120px;
+  .product-link {
+    text-decoration: none;
+  }
+  // 販売中
+  .sell {
+    color: blue;
+  }
+  // 売切れ
+  .sell-out {
+    color: red;
+  }
+}
+
+.product-image {
+  margin-left: 20px;
+  // margin-top: 10px;
+}
+
+// 商品詳細ページ
+.product-info {
+  font-size: 1.6rem;
+  border: 3px solid gray;
+  padding: 5px;
+
+  div {
+    padding-bottom: 5px;
+    .product-category {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 1.6rem;
+    }
+    .form-group .btn {
+      text-align: center;
+    }
+  }
+}

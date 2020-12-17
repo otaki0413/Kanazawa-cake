@@ -3,12 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// カートを空にするボタン
-.btn-all-destroy {
-  text-align: right;
+
+// カートアイテムテーブル
+.cart-table {
+  // カートを空にするボタン
+ .btn-all-destroy {
+   text-align: right;
+  }
+ // 情報入力ボタン
+ .btn-large {
+   text-align: center;
+  }
 }
 
-// 情報入力ボタン
-.btn-large {
-  text-align: center;
-}
+
+

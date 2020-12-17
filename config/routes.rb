@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  # namespace :admin do
+  #   get 'orders/index'
+  #   get 'orders/show'
+  # end
   # namespace :member do
   #   get 'delivery_goals/index'
   #   get 'delivery_goals/create'
@@ -49,7 +53,7 @@ Rails.application.routes.draw do
     registrations: 'member/registrations',
   }
 
-  get '/admin' => 'admin/homes#top'
+  get '/admin/top' => 'admin/homes#top'
 
   # member/homesコントローラのルーティング
   root 'member/homes#top'
@@ -83,6 +87,8 @@ Rails.application.routes.draw do
     resources :products
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :members, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:index, :show, :update]
+    resources :order_details, only: [:update]
   end
 
 

@@ -12,30 +12,28 @@
   <% end %>
 
   <div class="order-title">
-    <h3 class="row bg-warning">注文情報入力</h3>
+    <h3 class="row page-title">注文情報入力</h3>
   </div>
 
-  <div class="row bg-warning">
-    <div class="col-sm-12">
+  <div class="row">
+    <div class="col-sm-12 order-new-form">
       <!--このフォームでの入力はすぐにDBに保存しない-->
       <%= form_with url: orders_confirm_path, method: :get, local: true do |f| %>
 
         <h4>支払い方法</h4>
         <div class="form-group">
-          <%= f.radio_button :payment_method, :creditcard, checked: true %>
-          <%= f.label :payment_method, 'クレジットカード', {value: :creditcard} %>
-
-          <%= f.radio_button :payment_method, :bank_transfer %>
-          <%= f.label :payment_method, '銀行振込', {value: :bank_transfer} %>
-
-          <%= f.radio_button :payment_method, :cash_change %>
-          <%= f.label :payment_method, '代金引換', {value: :cash_change} %>
+          <%= f.radio_button :payment_method, 'クレジットカード', checked: true %>
+          <%= f.label :payment_method, 'クレジットカード' %>
+          <%= f.radio_button :payment_method, '銀行振込' %>
+          <%= f.label :payment_method, '銀行振込' %>
+          <%= f.radio_button :payment_method, '代金引換' %>
+          <%= f.label :payment_method, '代金引換' %>
         </div>
 
         <h4>お届け先</h4>
         <div class="form-group row">
           <div class="col-sm-12 ">
-            <%= f.radio_button :address_option, 0 %>
+            <%= f.radio_button :address_option, 0, checked: true %>
             <%= f.label :address, 'あなたの住所' %>
             <%= @member.my_address %><!--memberモデルから、カラムを連結させて取得----my_addressというメソッドを使う-->
           </div>
