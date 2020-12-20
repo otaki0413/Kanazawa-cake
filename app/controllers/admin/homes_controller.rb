@@ -1,15 +1,17 @@
 class Admin::HomesController < ApplicationController
 
-  # ここがよくわからん
-
   # 本日の注文件数
   def top
     @orders = Order.all
-  	if @orders.where([:created_at].to_s.match(/#{Date.today.to_s}.+/)).present?
-  		@order_data = @orders.where([:created_at].to_s.match(/#{Date.today.to_s}.+/)).count
-  	else
-  		@order_data = "注文ゼロ！"
-  	end
+    @order_data = 0
+
+    # 今日の注文日とマッチする度に、@order_dataに加算していく
+    @orders.each do |order|
+    	if (order[:created_at].to_s.match(/#{Date.today.to_s}.+/))
+    		@order_data = @order_data + 1
+    	end
+    end
+
   end
 
 end

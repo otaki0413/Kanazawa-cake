@@ -4,11 +4,18 @@
       <h3 class="page-title">管理者画面</h3>
     </div>
     <div class="col-xs-12">
-      <h4 class="page-msg">本日の注文件数
-      <%= link_to admin_orders_path, class: "order_data" do %>
-        <%= @order_data %>
-      <% end %>件
-      </h4>
+      <!--注文があるか、ないかで条件分岐-->
+      <% if @order_data == 0 %>
+        <%= link_to admin_orders_path, class: "order_data" do %>
+          <h4 class="page-msg">本日は注文がございません。</h4>
+        <% end %>
+      <% else %>
+        <h4 class="page-msg">本日の注文件数
+          <%= link_to admin_orders_path, class: "order_data" do %>
+          <%= @order_data %>
+          <% end %>件
+        </h4>
+      <% end %>
     </div>
   </div>
 </div>

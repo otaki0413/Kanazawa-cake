@@ -83,7 +83,6 @@ class Member::OrdersController < ApplicationController
 
   def index
     @orders = current_member.orders.order(created_at: :desc) #新しい物が上に来るように並び替える
-    # binding.pry
   end
 
   def show

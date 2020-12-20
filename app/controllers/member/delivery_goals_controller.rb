@@ -3,12 +3,14 @@ class Member::DeliveryGoalsController < ApplicationController
 
   def index
     @new_delivery = DeliveryGoal.new
-    @deliverys = DeliveryGoal.all
+    @member = current_member
+    @deliverys = @member.delivery_goals
   end
 
   def create
-    @delivery = DeliveryGoal.new(delivery_params)
-    @delivery.save
+    @new_delivery = DeliveryGoal.new(delivery_params)
+    @new_delivery.member_id = current_member.id
+    @new_delivery.save
     flash[:notice] = "新しく配送先を登録しました！"
     redirect_to delivery_goals_path
   end
@@ -16,7 +18,7 @@ class Member::DeliveryGoalsController < ApplicationController
   def edit
     @delivery = DeliveryGoal.find(params[:id])
   end
-  
+
   def update
     @delivery = DeliveryGoal.find(params[:id])
     @delivery.update(delivery_params)

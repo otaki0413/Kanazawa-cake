@@ -6,6 +6,7 @@ class Admin::OrdersController < ApplicationController
   end
 
 
+
   def show
     @order = Order.find(params[:id])
     # 特定の注文idに紐づく注文商品のデータ全て

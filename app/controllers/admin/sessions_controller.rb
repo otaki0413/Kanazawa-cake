@@ -26,12 +26,12 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_out_path_for(resource)
-    flash[:notice] = "Signed out successfully"
+    flash[:notice] = "ログアウトに成功しました！"
     new_admin_session_path
   end
 
   def after_sign_in_path_for(resource)
-    flash[:notice] = "Signed in successfully."
+    flash[:notice] = "ログインに成功しました！"
     admin_top_path
   end
 end
