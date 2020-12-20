@@ -3,7 +3,6 @@
   <strong class="nav-message">こちらから情報編集</strong>
 
   <%= form_with model: @member, url: members_path, method: :patch, local: true do |f| %>
-    <!--<= render "devise/shared/error_messages", resource: resource %>-->
 
     <div class="form-group row signup_form">
       <%= f.label :name, "名前", class: "col-sm-4 col-form-label" %>
@@ -57,6 +56,10 @@
 
   <!--退会ボタン-->
   <div class="unsubscribe">
-    <%= link_to "退会する", member_unsubscribe_path, class: "btn btn-danger" %>
+    <!--ユーザーがログインしていれば退会ボタンを表示する。-->
+    <% if member_signed_in? %>
+      <%= link_to "退会する", member_unsubscribe_path, class: "btn btn-danger" %>
+    <% end %>
   </div>
+</div>
 

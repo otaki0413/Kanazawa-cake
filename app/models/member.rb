@@ -34,4 +34,9 @@ class Member < ApplicationRecord
     [last_name_kana,first_name_kana].join(' ')
   end
 
+  # 退会ユーザーをログインできないようにする
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+
 end

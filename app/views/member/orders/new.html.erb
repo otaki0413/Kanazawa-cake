@@ -45,7 +45,7 @@
             <%= f.label :address, '登録済み住所から選択' %>
             <div>
               <!--仮のカラム,deliveryを指定する-->
-              <%= f.collection_select :delivery, DeliveryGoal.all, :id, :full_deliveries, :include_blank => '選択してください', required: true %>
+              <%= f.collection_select :delivery, @member.delivery_goals, :id, :full_deliveries, :include_blank => '選択してください', required: true %>
             </div>
           </div>
         </div>
