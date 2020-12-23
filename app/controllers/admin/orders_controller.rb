@@ -5,8 +5,6 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.all.order(created_at: :desc) #新しい順に並び替える
   end
 
-
-
   def show
     @order = Order.find(params[:id])
     # 特定の注文idに紐づく注文商品のデータ全て
