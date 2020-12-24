@@ -4,7 +4,7 @@
       <h3 class="page-title">管理者画面</h3>
     </div>
     <div class="col-xs-12">
-      <!--注文があるか、ないかで条件分岐-->
+      <!--本日の注文があるか、ないかで条件分岐-->
       <% if @order_data == 0 %>
         <%= link_to admin_orders_path, class: "order_data" do %>
           <h4 class="page-msg">本日は注文がございません。</h4>

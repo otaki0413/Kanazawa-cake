@@ -27,11 +27,11 @@ class Member::CartItemsController < ApplicationController
       @present_item.amount = @present_item.amount.to_i + params[:cart_item][:amount].to_i
       # @present_item.update(cart_item_params)
       @present_item.update(amount: @present_item.amount)
-      flash[:notice] = "Same Item was successfully added to cart."
+      flash[:notice] = "同商品をカートに追加しました。"
       redirect_to cart_items_path
     else
       @cart_item.save
-      flash[:notice] = "New Item was successfully added to cart."
+      flash[:notice] = "商品を新しくカートに追加しました。"
       redirect_to cart_items_path
     end
   end
@@ -61,7 +61,6 @@ class Member::CartItemsController < ApplicationController
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
     redirect_back(fallback_location: root_path)
-    # 前のアクションに飛ぶ
   end
 
 

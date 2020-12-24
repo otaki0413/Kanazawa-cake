@@ -25,8 +25,8 @@ class Member::MembersController < ApplicationController
 
   def retire
     member = current_member
-    真偽値反転
-    member.toggle!(:is_deleted)
+    # 真偽値反転
+    # member.toggle!(:is_deleted)
     # どちらでもいいが、今回は下のupdate_attributesでいく
     # カラム名が1つの時に使う
     member.update_attributes(is_deleted: true)
