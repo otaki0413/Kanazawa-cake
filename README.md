@@ -1,3 +1,2 @@
-# README
-
 # name
+Kanazawa_cake
