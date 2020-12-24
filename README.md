@@ -5,4 +5,5 @@ Kanazawa_cake
 あるスイーツ店をイメージしたECサイトです。
 ＊タイトルに「Kanazawa」とありますが、特に金沢とは関係ありません。
 
-hhh
+# Description
+
