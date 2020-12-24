@@ -1,7 +1,8 @@
 
-# Kanazawa_cake
+# Title
+Kanazawa_cake
 
-# Overview
+## Overview
 あるスイーツ店をイメージしたECサイトです。
 ＊タイトルに「Kanazawa」とありますが、特に金沢とは関係ありません。
 
