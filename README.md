@@ -1,5 +1,5 @@
-# Name
-Kanazawa_cake
+
+# Kanazawa_cake
 
 # Overview
 あるスイーツ店をイメージしたECサイトです。
